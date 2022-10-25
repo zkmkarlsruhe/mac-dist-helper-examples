@@ -1,0 +1,21 @@
+
+# mac-dist-helpers
+export
+dist
+
+# packages
+*.zip
+*.dmg
+
+# macOS
+*.app
+.DS_Store
+
+# Xcode
+*.pbxuser
+*.perspective
+*.perspectivev3
+*.mode1v3
+*.mode2v3
+xcuserdata
+*.xcworkspace

@@ -1,0 +1,16 @@
+# c
+*.o
+
+# mac-dist-helpers
+export
+dist
+
+# packages
+*.zip
+*.dmg
+
+# macOS
+*.app
+*.dylib
+.DS_Store
+_CodeSignature
