@@ -15,12 +15,6 @@ WARRANTIES, see the file, "LICENSE.txt," in this distribution.
 
 Inspired by the [Hello World](https://github.com/pure-data/helloworld) Pure Data external using pd-lib-builder.
 
-
-https://www.synack.com/blog/untranslocating-apps/
-https://proinsias.github.io/til/Mac-Remove-quarantine-flag-from-app/
-https://wiki.lazarus.freepascal.org/Code_Signing_for_macOS
-https://wiki.lazarus.freepascal.org/Notarization_for_macOS_10.14.5%2B
-
 Quick Start
 -----------
 
