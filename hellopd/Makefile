@@ -1,4 +1,16 @@
-# Makefile to build class 'helloworld' for Pure Data.
+# Copyright (c) 2022 ZKM | Hertz-Lab
+# Dan Wilcox <dan.wilcox@zkm.de>
+#
+# BSD Simplified License.
+# For information on usage and redistribution, and for a DISCLAIMER OF ALL
+# WARRANTIES, see the file, "LICENSE.txt," in this distribution.
+#
+# This code has been developed at ZKM | Hertz-Lab as part of "The Intelligent
+# Museum" generously funded by the German Federal Cultural Foundation.
+#
+# See https://github.com/zkmkarlsruhe/mac-dist-helper-examples
+
+# Makefile to build class 'hellopd' for Pure Data.
 # Needs Makefile.pdlibbuilder as helper makefile for platform-dependent build
 # settings and rules.
 
