@@ -51,7 +51,7 @@ make clean dist-clean dist-clobber
 
 ### HelloWorld
 
-![media/helloworld-screenshot.png]
+![HelloWorld screenshot](media/helloworld-screenshot.png)
 
 This is a basic single-window Cocoa application.
 
@@ -70,7 +70,7 @@ make app dist-dmg
 
 ### HelloOF
 
-![media/helloof-screenshot.png]
+![HelloOF screenshot](media/helloof-screenshot.png)
 
 This is an [openFrameworks](https://openframeworks.cc) application with an external `data` folder.
 
@@ -99,7 +99,7 @@ make all app dist-dmg
 
 ### hello
 
-![media/hello-screenshot.png]
+![hello console screenshot](media/hello-screenshot.png)
 
 This is a C console program which links to a custom dynamic library. Both binaries need to be signed "in place" then packaged and notarized.
 
@@ -118,7 +118,7 @@ make all dist-dmg
 
 ### hellopd
 
-![media/hellopd-screenshot.png]
+![hellopd external screenshot](media/hellopd-screenshot.png)
 
 This is a [Pure Data](https://pure-data.info) external library which is build using the [pd-lib-builder](https://github.com/pure-data/pd-lib-builder) makefile. The `pd_darwin` file (renamed dylib) needs to be signed then packaged and notarized. 
 
