@@ -46,7 +46,7 @@ mac.dist.include = $(datafiles) $(datadirs)
 
 # codesign identity, usually a Developer ID Application string
 # REPLACE this with your own or set it via the commandline:
-# make distdmg mac.codesign.identity="Foo Bar Baz Developers"
+# make dist-dmg mac.codesign.identity="Foo Bar Baz Developers"
 mac.codesign.identity = ZKM | Zentrum fuer Kunst und Medientechnologie Karlsruhe
 
 MACDISTHELPER_DIR=../mac-dist-helper
