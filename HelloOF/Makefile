@@ -12,7 +12,7 @@ endif
 # call the project makefile!
 include $(OF_ROOT)/libs/openFrameworksCompiled/project/makefileCommon/compile.project.mk
 
-##### mac-dist-helpers
+##### Makefile-mac-dist.mk
 
 # app name to build
 mac.app.name = HelloOF
@@ -26,10 +26,13 @@ mac.app.project.scheme = $(mac.app.name) Release
 # include openFrameworks project data
 mac.dist.include = bin/data
 
+# add link to /Applications in dmg
+mac.dmg.appslink = true
+
 # codesign identity, usually a Developer ID Application string
 # REPLACE this with your own or set it via the commandline:
 # make app distdmg mac.codesign.identity="Foo Bar Baz Developers"
 mac.codesign.identity = ZKM | Zentrum fuer Kunst und Medientechnologie Karlsruhe
 
-include ../mac-dist-helpers/Makefile-mac-app.mk
-include ../mac-dist-helpers/Makefile-mac-dist.mk
+MACDISTHELPER_DIR=../mac-dist-helper
+include $(MACDISTHELPER_DIR)/Makefile-mac-dist.mk

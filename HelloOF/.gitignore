@@ -1,8 +1,11 @@
 # TODO please fill me
 
 config.make
-export
+
+# mac-dist-helper
 dist
+*.zip
+*.dmg
 
 # model
 bin/data/model

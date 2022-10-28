@@ -1,9 +1,5 @@
-
-# mac-dist-helpers
-export
+# mac-dist-helper
 dist
-
-# packages
 *.zip
 *.dmg
 

@@ -1,7 +1,7 @@
 mac-dist-helper-examples
 ========================
 
-Example projects for the [mac-dist-helper Makefiles](https://github.com/zkmkarlsruhe/mac-dist-helper) which automate packaging macOS binaries for distribution
+Example projects for the [mac-dist-helper Makefile](https://github.com/zkmkarlsruhe/mac-dist-helper) which automates packaging macOS binaries for distribution
 
 This code base has been developed by [ZKM | Hertz-Lab](https://zkm.de/en/about-the-zkm/organization/hertz-lab) as part of the project [»The Intelligent Museum«](#the-intelligent-museum).
 
@@ -15,6 +15,12 @@ WARRANTIES, see the file, "LICENSE.txt," in this distribution.
 
 Inspired by the [Hello World](https://github.com/pure-data/helloworld) Pure Data external using pd-lib-builder.
 
+
+https://www.synack.com/blog/untranslocating-apps/
+https://proinsias.github.io/til/Mac-Remove-quarantine-flag-from-app/
+https://wiki.lazarus.freepascal.org/Code_Signing_for_macOS
+https://wiki.lazarus.freepascal.org/Notarization_for_macOS_10.14.5%2B
+
 Quick Start
 -----------
 
@@ -25,39 +31,48 @@ git clone git@github.com:zkmkarlsruhe/mac-dist-helper-examples.git
 git submodule update --init --recursive
 ```
 
-Next, make sure all requirements are setup: [mac-dist-helper requirements](https://github.com/zkmkarlsruhe/mac-dist-helper#requirements)
+Next, make sure all requirements are set up: [mac-dist-helper requirements](https://github.com/zkmkarlsruhe/mac-dist-helper#requirements)
 
 Examples
 --------
 
-These are very basic instructions to buiild both the examples and distribution images. For details, see the [mac-dist-helper readme](https://github.com/zkmkarlsruhe/mac-dist-helper).
+These are very basic instructions to build both the examples and distribution images. For details, see the [mac-dist-helper readme](https://github.com/zkmkarlsruhe/mac-dist-helper).
 
-* HelloWorld: simple Cocoa .app bundle
-* HelloOF: [openFrameworks](https://openframeworks.cc) macOS app
-* hello: simple console program with a bundled dynamic library
-* hellopd: [Pure Data](https://pure-data.info) C external
+* **HelloWorld**: simple Cocoa app
+* **HelloOF**: [openFrameworks](https://openframeworks.cc) macOS application
+* **hello**: simple console program with a bundled dynamic library
+* **hellopd**: [Pure Data](https://pure-data.info) C external library
+
+To do a full clean on any example:
+
+```shell
+make clean dist-clean dist-clobber
+```
 
 ### HelloWorld
 
 ![media/helloworld-screenshot.png]
 
+This is a basic single-window Cocoa application.
+
 In the Xcode project Signing & Capabilities settings:
 * enable Automatically manage signing for Release and set the team
-* enable Hardened Runtime, if not set (default for Xcode 14+)
+* enable Hardened Runtime, if not set
 
 Next, set the codesign identity in `HelloWorld/Makefile`.
 
-Create a signed & notarized distribution `.dmg` disk image with:
+Create a signed & notarized distribution `dmg` disk image with:
 
 ```shell
 cd HelloWorld
-make app
-make distdmg
+make app dist-dmg
 ```
 
 ### HelloOF
 
 ![media/helloof-screenshot.png]
+
+This is an [openFrameworks](https://openframeworks.cc) application with an external `data` folder.
 
 The Xcode project file is not included so you will need to generate it using the OF ProjectGenerator which is included with the openFrameworks distribution.
 
@@ -69,7 +84,7 @@ To (re)generate the Xcode project:
 
 Additionally, in the Xcode project Signing & Capabilities settings:
 * enable Automatically manage signing for Release and set the team
-* enable Hardened Runtime, if not set (default for Xcode 14+)
+* enable Hardened Runtime, if not set
 
 Next, set the codesign identity in `HelloOF/Makefile`.
 
@@ -79,42 +94,41 @@ Before building for distribution, make sure the OF lib itself is built by buildi
 
 ```shell
 cd HelloOF
-make app
-make distdmg
+make all app dist-dmg
 ```
 
 ### hello
 
 ![media/hello-screenshot.png]
 
+This is a C console program which links to a custom dynamic library. Both binaries need to be signed "in place" then packaged and notarized.
+
 Before starting, set the codesign identity in `hello/Makefile`.
+
+When building, the following extra steps are performed for distribution:
+* an Info.plist is embedded in each program executable using `-sectcreate TEXT`
+* the dynamic lib loading paths are set to `@executable_path` using `install_name_tool`
 
 Build for distribution with:
 
 ```shell
 cd hello
-make
-make dist codesign distdmg
-```
-
-The separate `dist` and `codesign` targets are important to call before `distdmg` if the program is built without Xcode, so code signing needs to be performed manually on the binaries in the `dist` temp directory before creating a dmg or zip.
-
-If encountering errors, do a full clean with:
-
-```shell
-make clean distclean distclobber
+make all dist-dmg
 ```
 
 ### hellopd
 
 ![media/hellopd-screenshot.png]
 
+This is a [Pure Data](https://pure-data.info) external library which is build using the [pd-lib-builder](https://github.com/pure-data/pd-lib-builder) makefile. The `pd_darwin` file (renamed dylib) needs to be signed then packaged and notarized. 
+
+Before starting, set the codesign identity in `hello/Makefile`.
+
 Build for distribution with:
 
 ```shell
 cd hellopd
-make
-make dist codesign distdmg
+make all dist-dmg
 ```
 
 The Intelligent Museum
@@ -127,4 +141,3 @@ The [ZKM | Center for Art and Media](https://zkm.de/en) and the [Deutsches Museu
 As part of the project, digital curating will be critically examined using various approaches of digital art. Experimenting with new digital aesthetics and forms of expression enables new museum experiences and thus new ways of museum communication and visitor participation. The museum is transformed to a place of experience and critical exchange.
 
 ![Logo](media/Logo_ZKM_DMN_KSB.png)
-
