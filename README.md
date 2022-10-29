@@ -88,7 +88,8 @@ Before building for distribution, make sure the OF lib itself is built by buildi
 
 ```shell
 cd HelloOF
-make all app dist-dmg
+make
+make app dist-dmg
 ```
 
 ### hello
@@ -107,7 +108,8 @@ Build for distribution with:
 
 ```shell
 cd hello
-make all dist-dmg
+make
+make dist-dmg
 ```
 
 ### hellopd
@@ -116,13 +118,14 @@ make all dist-dmg
 
 This is a [Pure Data](https://pure-data.info) external library which is build using the [pd-lib-builder](https://github.com/pure-data/pd-lib-builder) makefile. The `pd_darwin` file (renamed dylib) needs to be signed then packaged and notarized. 
 
-Before starting, set the codesign identity in `hello/Makefile`.
+Before starting, set the codesign identity in `hellopd/Makefile`.
 
 Build for distribution with:
 
 ```shell
 cd hellopd
-make all dist-dmg
+make
+make dist-dmg
 ```
 
 The Intelligent Museum
