@@ -77,8 +77,8 @@ To (re)generate the Xcode project:
 3. Click the "Update" button
 
 Additionally, in the Xcode project Signing & Capabilities settings:
-* enable Automatically manage signing for Release and set the team
-* enable Hardened Runtime, if not set
+1. enable Automatically manage signing for Release and set the team
+2. enable Hardened Runtime, if not set
 
 Next, set the codesign identity in `HelloOF/Makefile`.
 
@@ -116,7 +116,7 @@ make dist-dmg
 
 ![hellopd external screenshot](media/hellopd-screenshot.png)
 
-This is a [Pure Data](https://pure-data.info) external library which is build using the [pd-lib-builder](https://github.com/pure-data/pd-lib-builder) makefile. The `pd_darwin` file (renamed dylib) needs to be signed then packaged and notarized. 
+This is a [Pure Data](https://pure-data.info) external library which is built using the [pd-lib-builder](https://github.com/pure-data/pd-lib-builder) makefile. The `pd_darwin` file (renamed dylib) needs to be signed then packaged and notarized. 
 
 Before starting, set the codesign identity in `hellopd/Makefile`.
 
